@@ -1,0 +1,18 @@
+Imports: {import static gate.Utils.*; }
+
+Phase: ModifyLookup
+Input:Lookup Lookup2 Lookup3 Sentence
+Options: control=appelt
+
+
+Rule: prob1
+(
+	({Lookup2.minorType == probability}):prob
+	({Lookup.majorType == umls}):umls
+):match
+-->
+:umls {
+  getOnlyAnn(umlsAnnots).getFeatures().put("Certainty", 
+    getOnlyAnn(bindings.get("prob")).getFeatures().get("Level"));
+}
+

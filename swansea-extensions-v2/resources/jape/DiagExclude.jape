@@ -1,0 +1,30 @@
+Phase: DiagExclude
+Input:  Diagnosis Lookup3
+Options: control=all
+
+
+
+
+
+Rule: DiagExclude
+(   
+    ({Diagnosis contains {Lookup3.singleSeizure==true}} | {Diagnosis, Lookup3.singleSeizure==true}):umls
+):match
+-->
+:match.SingleSeizure = {rule = singleSeizure, PREF = :match.Diagnosis.PREF, CUI = :match.Diagnosis.CUI, Negation = :match.Diagnosis.Negation} 
+
+Rule: DiagExclude
+(   
+    ({Diagnosis contains {Lookup3.singleSeizure==true}} | {Diagnosis, Lookup3.singleSeizure==true}):umls
+):match
+-->
+:umls { 
+  inputAS.removeAll(umlsAnnots);
+}
+
+
+
+
+//:umls { 
+  //inputAS.removeAll(umlsAnnots);
+//}

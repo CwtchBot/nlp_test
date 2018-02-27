@@ -1,0 +1,47 @@
+Phase: SeizureExclude1
+Input: SeizureFrequency SeizureSince SeizureFree Sentence Context Lookup2 
+Options: control=appelt
+
+
+
+Rule: seizureExclude
+Priority: 99
+(   
+    ({Context.context != current})+
+    ({SeizureFrequency} | {SeizureSince} | {SeizureFree}):umls
+):match
+-->
+:umls { 
+  inputAS.removeAll(umlsAnnots);
+}
+
+
+Rule: seizureExclude
+Priority: 99
+(   
+    ({Lookup2.minorType==probability, Lookup2.Level !=5} | {Lookup2.minorType==probability, Lookup2.Level !=4})
+    ({SeizureFrequency} | {SeizureSince} | {SeizureFree}):umls
+):match
+-->
+:umls { 
+  inputAS.removeAll(umlsAnnots);
+}
+
+
+
+
+
+
+Rule: savedFromExclusion
+Priority: 100
+(   
+    {Context}
+    {Context.context==current}
+    ({SeizureFrequency} | {SeizureSince} | {SeizureFree}):umls
+):match
+-->
+{ }
+
+
+
+

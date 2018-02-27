@@ -1,0 +1,13 @@
+Phase: PartialDate
+Input: DayDate Month Numeric Token
+Options: control=appelt
+
+Rule: partialDate
+Priority: 99
+(
+	({DayDate})?
+	{Month}
+	({Numeric})?
+):match
+-->
+:match.PartialDate = {rule = partialDate, day=:match.DayDate.value, month=:match.Month.month, year=:match.Numeric.value}

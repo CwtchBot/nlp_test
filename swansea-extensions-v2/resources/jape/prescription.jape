@@ -1,0 +1,17 @@
+Phase: DrugStatus
+Input: Measurement DoseFrequency Lookup Numeric ContextPrescription NewLine
+Options: control=appelt
+
+Rule: doseMatch0
+(   
+    ({ContextPrescription})?
+    ({Lookup.STY=="Pharmacologic Substance"})
+    ({ContextPrescription})?
+    {Measurement}
+    ({ContextPrescription})?
+    {DoseFrequency}
+    ({ContextPrescription})?
+):match
+-->
+:match.Prescription0 = { rule = doseMatch0,  drug = :match.Lookup.PREF,  CUI = :match.Lookup.inst, dose-val = :match.Measurement.quantity, dose-unit =:match.Measurement.units, dose-frequency = :match.DoseFrequency.frequency, time-unit = :match.DoseFrequency.time-unit dose-interval = :match.DoseFrequency.interval, Context = :match.ContextPrescription.context}
+

@@ -1,0 +1,39 @@
+re-do Investigations
+
+
+Ep Confirmed
+------------
+Inlcudes specified type of seizure
+
+
+Ep type
+-------
+Only include type from explicitly saying the type i.e. Primary Generalized Epilepsy (i.e. not from seizure type)
+
+Seizure Type
+------------
+Every mention of focal seizure
+
+
+Seizure Frequency
+-----------------
+Only pick up rates or number of seizures + time period, or since last visit , or since change in drug
+Only current
+Last seizure in x = seizure free since x
+
+
+
+Prescriptions
+-------------
+Current full prescriptions i.e. we have changed him onto blah blah blah
+
+
+
+
+MRI/EEG/CT
+-----------
+
+
+
+
+
