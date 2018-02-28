@@ -1,8 +1,0 @@
-MultiPhase:	Pruning
-
-Phases:
-annotation-pruning
-cleaning
-NegationCleanUp
-NegationCleanup2
-removeUselessLookups
